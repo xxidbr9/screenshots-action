@@ -7,12 +7,7 @@ const readdir = util.promisify(fs.readdir);
 const telegram = require('./telegram.js');
 
 const DEFAULT_DESKTOP_VIEWPOINT_RATIO = [
-  { width: 540, height: 405 },
-  { width: 600, height: 450 },
-  { width: 720, height: 540 },
-  { width: 960, height: 720 },
-  { width: 1140, height: 640 },
-  { width: 1280, height: 720 },
+  { width: 1366, height: 768 },
   { width: 1920, height: 1080 },
 ];
 
@@ -21,6 +16,7 @@ const DEFAULT_DESKTOP_VIEWPOINT_RATIO = [
 - [ ] Clean the code
 - [ ] Refactor all code
 - [ ] Module Concepts
+- [ ] Add Custom size
 */
 
 const DEFAULT_TYPE = 'jpeg';
@@ -38,7 +34,7 @@ async function run() {
   try {
     const url = core.getInput('url') || 'https://xxidbr9.github.io/contoh-responsive-di-css/';
     let includedDevices = core.getInput('devices') || 'iPhone 12 Pro';
-    const noDesktop = Boolean(core.getInput('noDesktop')) || true;
+    const noDesktop = core.getInput('noDesktop') === "true";
     const fullPage = core.getInput('fullPage') === 'true';
     let screenshotType = core.getInput('type') || DEFAULT_TYPE;
 
