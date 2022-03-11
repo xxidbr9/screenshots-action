@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const io = require('@actions/io');
 const puppeteer = require('puppeteer');
-const deviceDescriptors = require('puppeteer/lib/DeviceDescriptors');
+const deviceDescriptors = require('puppeteer/lib/cjs/puppeteer/common/DeviceDescriptors');
 const fs = require('fs');
 const util = require('util');
 const readdir = util.promisify(fs.readdir);
@@ -85,9 +85,9 @@ async function run() {
     const launchOptions = !process.env.GITHUB_SHA
       ? {}
       : {
-          executablePath: 'google-chrome-stable',
-          args: ['--no-sandbox'],
-        };
+        executablePath: 'google-chrome-stable',
+        args: ['--no-sandbox'],
+      };
     const browser = await puppeteer.launch(launchOptions);
 
     const desktopPage = await browser.newPage();
