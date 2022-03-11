@@ -20,7 +20,7 @@ const DEFAULT_DESKTOP_VIEWPOINT_RATIO = [
 */
 
 const DEFAULT_TYPE = 'jpeg';
-const deviceNames = Object.keys(puppeteer.devices)
+const deviceNames = Object.keys(puppeteer.devices);
 
 const PATH = process.env.GITHUB_WORKSPACE
   ? `${process.env.GITHUB_WORKSPACE}/screenshots/`
@@ -32,9 +32,11 @@ const POST_FIX = process.env.GITHUB_SHA
 
 async function run() {
   try {
-    const url = core.getInput('url') || 'https://xxidbr9.github.io/contoh-responsive-di-css/';
+    const url =
+      core.getInput('url') ||
+      'https://xxidbr9.github.io/contoh-responsive-di-css/';
     let includedDevices = core.getInput('devices') || 'iPhone 12 Pro';
-    const noDesktop = core.getInput('noDesktop') === "true";
+    const noDesktop = core.getInput('noDesktop') === 'true';
     const fullPage = core.getInput('fullPage') === 'true';
     let screenshotType = core.getInput('type') || DEFAULT_TYPE;
 
@@ -88,9 +90,9 @@ async function run() {
     const launchOptions = !process.env.GITHUB_SHA
       ? {}
       : {
-        executablePath: 'google-chrome-stable',
-        args: ['--no-sandbox'],
-      };
+          executablePath: 'google-chrome-stable',
+          args: ['--no-sandbox'],
+        };
     const browser = await puppeteer.launch(launchOptions);
 
     const desktopPage = await browser.newPage();
