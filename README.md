@@ -21,8 +21,8 @@ Generate a website screenshots in different viewpoint, devices.
 
 | Name(type) | required(default) | Description |
 | ------------- | ------------- | ------------- |
-| `TELE_CHAT_ID`(string) | optional(`""`) | Integration with **Telegram**. `screenshots-ci-action` will send screenshots to telegram. see [README.Telegram](/README.Telegram.md) for setting detail. (v1.1.1 added) |
-| `TELE_BOT_TOKEN`(string) | optional(`""`) | Integration with **Telegram**. `screenshots-ci-action` will send screenshots to telegram. see [README.Telegram](/README.Telegram.md) for setting detail. (v1.1.1 added) |
+| `TELE_CHAT_ID`(string) | optional(`""`) | Integration with **Telegram**. `screenshots-ci-action` will send screenshots to telegram. see [README.Telegram](/README.Telegram.md) for setting detail. (v1.1.1 added) 5
+| `TELE_BOT_TOKEN`(string) | optional(`""`) | Integration with **Telegram**. `screenshots-ci-action` will send screenshots to telegram. see [README.Telegram](/README.Telegram.md) for setting detail. (v1.1.1 added) 5
 
 # Config Examples (screenshot desktop and few specific devices)
 1. At the root of your repository, create a directory named `.github/workflows` to store your workflow files.
@@ -49,7 +49,7 @@ jobs:
       env:
         CI: 'true'
     - name: screenshots-ci-action
-      uses: flameddd/screenshots-ci-action@v1.1.1
+      uses: xxidbr9/screenshots-ci-action@v1.1.5
       with:
         url: https://github.com
         devices: iPhone 6,iPhone 6 landscape,Nexus 7,Pad Pro,Galaxy S III landscape,iPad Pro landscape
@@ -78,7 +78,7 @@ jobs:
       env:
         CI: 'true'
     - name: screenshots-ci-action
-      uses: flameddd/screenshots-ci-action@v1.1.1
+      uses: xxidbr9/screenshots-ci-action@v1.1.5
       with:
         url: https://github.com
         devices: iPhone 6,iPhone 6 landscape
@@ -110,7 +110,7 @@ jobs:
       env:
         CI: 'true'
     - name: screenshots-desktop-facebook
-      uses: flameddd/screenshots-ci-action@v1.1.1
+      uses: xxidbr9/screenshots-ci-action@v1.1.5
       with:
         url: https://www.facebook.com/
     - uses: actions/upload-artifact@v2
@@ -120,7 +120,7 @@ jobs:
     - run: rm ./screenshots/*
 
     - name: screenshots-mobile-facebook
-      uses: flameddd/screenshots-ci-action@v1.1.1
+      uses: xxidbr9/screenshots-ci-action@v1.1.5
       with:
         url: https://m.facebook.com/
         devices: iPhone 6,iPhone 6 landscape
@@ -153,7 +153,8 @@ jobs:
 - width: 1280px, height: 720px
 - width: 1920px, height: 1080px
 
-### full mobile devices options (https://github.com/puppeteer/puppeteer/blob/master/experimental/puppeteer-firefox/lib/DeviceDescriptors.js)
+### full mobile devices options 
+[here](https://github.com/puppeteer/puppeteer/blob/main/src/common/DeviceDescriptors.ts)
 <details>
   <summary>Click to show all list!</summary>
   
