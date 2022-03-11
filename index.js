@@ -1,7 +1,6 @@
 const core = require('@actions/core');
 const io = require('@actions/io');
 const puppeteer = require('puppeteer');
-const deviceDescriptors = require('puppeteer/lib/cjs/puppeteer/common/DeviceDescriptors');
 const fs = require('fs');
 const util = require('util');
 const readdir = util.promisify(fs.readdir);
@@ -17,8 +16,16 @@ const DEFAULT_DESKTOP_VIEWPOINT_RATIO = [
   { width: 1920, height: 1080 },
 ];
 
+/* 
+? TODO :
+- [ ] Clean the code
+- [ ] Refactor all code
+- [ ] Module Concepts
+*/
+
 const DEFAULT_TYPE = 'jpeg';
-const deviceNames = deviceDescriptors.map((device) => device.name);
+const deviceNames = Object.keys(puppeteer.devices)
+
 const PATH = process.env.GITHUB_WORKSPACE
   ? `${process.env.GITHUB_WORKSPACE}/screenshots/`
   : `screenshots/`;
@@ -30,7 +37,7 @@ const POST_FIX = process.env.GITHUB_SHA
 async function run() {
   try {
     const url = core.getInput('url') || '';
-    let includedDevices = core.getInput('devices') || '';
+    let includedDevices = core.getInput('devices') || 'iPhone 12 Pro';
     const noDesktop = core.getInput('noDesktop') === 'true';
     const fullPage = core.getInput('fullPage') === 'true';
     let screenshotType = core.getInput('type') || DEFAULT_TYPE;
