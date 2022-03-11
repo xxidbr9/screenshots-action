@@ -36,9 +36,9 @@ const POST_FIX = process.env.GITHUB_SHA
 
 async function run() {
   try {
-    const url = core.getInput('url') || '';
+    const url = core.getInput('url') || 'https://xxidbr9.github.io/contoh-responsive-di-css/';
     let includedDevices = core.getInput('devices') || 'iPhone 12 Pro';
-    const noDesktop = core.getInput('noDesktop') === 'true';
+    const noDesktop = Boolean(core.getInput('noDesktop')) || true;
     const fullPage = core.getInput('fullPage') === 'true';
     let screenshotType = core.getInput('type') || DEFAULT_TYPE;
 
