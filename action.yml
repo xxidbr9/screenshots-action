@@ -1,6 +1,6 @@
-name: "screenshots-ci-action"
-description: "Screenshot a website with different viewpoints"
-author: "JackyHu <flameddd@hotmail.com>"
+name: "screenshots-action"
+description: "Screenshot a website with different viewpoints : from https://github.com/flameddd/screenshots-ci-action"
+author: "Barnando Akbarto Hidayatullah <barnando13@gmail.com>"
 branding:
   icon: 'monitor'
   color: 'blue'
@@ -11,14 +11,14 @@ inputs:
   noDesktop:
     required: false
     description: "Not screenshot website's desktop viewpoint"
-    default: false
+    default: "false"
   devices:
     required: false
-    description: "Screenshot specific mobile devices viewpoint. e.x.: 'iPhone 6' 'Galaxy S III landscape' 'iPad Pro landscape'"
+    description: "Screenshot specific mobile devices viewpoint. e.x.: 'iPhone 12' 'iPhone 12 landscape' 'iPad Pro landscape'"
   fullPage:
     required: false
     description: "When true, takes a screenshot of the full scrollable page. Defaults to false"
-    default: false
+    default: "false"
   type:
     required: false
     description: "Specify screenshot type, can be either jpeg or png. Defaults to 'jpeg'."
