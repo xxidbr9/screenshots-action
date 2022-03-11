@@ -3,6 +3,7 @@ Generate a website screenshots in different viewpoint, devices.
 
 # TODO
 - [ ] Refactor entire code
+- [ ] Add better documentation
 
 - **feel free to open issue to discuss your scenario**
 
