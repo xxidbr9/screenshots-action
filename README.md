@@ -1,5 +1,9 @@
-# screenshots-ci-action
+# screenshots-action
 Generate a website screenshots in different viewpoint, devices.
+
+# TODO
+- [ ] Refactor entire code
+
 - **feel free to open issue to discuss your scenario**
 
 ## Parameters
