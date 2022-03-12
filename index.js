@@ -100,10 +100,14 @@ async function run() {
       await io.mkdirP(`${process.env.GITHUB_WORKSPACE}/screenshots/`);
     }
 
+
     if (!noDesktop) {
       core.startGroup('start process desktop');
       console.log('Processing desktop screenshot');
-      await desktopPage.goto(url, { waitUntil: 'networkidle0' });
+      await desktopPage.goto(url, {
+        waitUntil: 'networkidle0'
+        // waitUntil: 'load'
+      });
       for (const { width, height } of DEFAULT_DESKTOP_VIEWPOINT_RATIO) {
         await desktopPage.setViewport({ width, height });
         await desktopPage.screenshot({
@@ -126,8 +130,12 @@ async function run() {
       for (const [index, page] of mobilePages.entries()) {
         console.log('mobile for loop in ');
         console.log('run on device', puppeteer.devices[`${includedDevices[index]}`].name);
+        await page.setDefaultNavigationTimeout(0);
         await page.emulate(puppeteer.devices[`${includedDevices[index]}`]);
-        await page.goto(url, { waitUntil: 'networkidle0' });
+        await page.goto(url, {
+          // waitUntil: 'networkidle0'
+          waitUntil: 'networkidle2'
+        });
         await page.screenshot({
           path: `${PATH}${includedDevices[index].replace(
             / /g,
