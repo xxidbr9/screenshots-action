@@ -17,13 +17,6 @@ Generate a website screenshots in different viewpoint, devices.
 | `fullPage`(boolean) | optional(`false`) | Set `true`, takes a screenshot of the full scrollable page. (v1.1.0 added) |
 | `type`(string) | optional(`jpeg`) | Specify screenshot type, can be either `jpeg` or `png`. (v1.1.0 added) |
 
-## Envs
-
-| Name(type) | required(default) | Description |
-| ------------- | ------------- | ------------- |
-| `TELE_CHAT_ID`(string) | optional(`""`) | Integration with **Telegram**. `screenshots-ci-action` will send screenshots to telegram. see [README.Telegram](/README.Telegram.md) for setting detail. (v1.1.1 added) 5
-| `TELE_BOT_TOKEN`(string) | optional(`""`) | Integration with **Telegram**. `screenshots-ci-action` will send screenshots to telegram. see [README.Telegram](/README.Telegram.md) for setting detail. (v1.1.1 added) 5
-
 # Config Examples (screenshot desktop and few specific devices)
 1. At the root of your repository, create a directory named `.github/workflows` to store your workflow files.
 
@@ -135,23 +128,16 @@ jobs:
 # More Config Examples (**Vercel**, **Netlify**)
 - [**Vercel** Preview Deployment screenhots](/README.Vercel.md)
 - [**Netlify** Preview Deployment screenhots](/README.Netlify.md)
-- [Integration with **Telegram**](/README.Telegram.md)
 
 # Download screenshots (more result example in below)
 ![img](./asset/download_screenshots_01.jpg)
 ![img](./asset/download_screenshots_02.jpg)
 
-# Telegram
-![img](./asset/telegram4.jpg)
-
 ## desktop: genrate all these ratio
-- width: 540px, height: 405px
-- width: 600px, height: 450px
-- width: 720px, height: 540px
-- width: 960px, height: 720px
-- width: 1140px, height: 640px
-- width: 1280px, height: 720px
+- width: 1366px, height: 768px
 - width: 1920px, height: 1080px
+
+
 
 ### full mobile devices options 
 [here](https://github.com/puppeteer/puppeteer/blob/main/src/common/DeviceDescriptors.ts)
@@ -275,28 +261,6 @@ jobs:
   - 'Moto G4',
   - 'Moto G4 landscape'
 </details>
-
-## Result examples
-### desktop (600x450)
-![img](./asset/desktopPage600x450-6febe96.png)
-
-### desktop (960x720)
-![img](./asset/desktopPage960x720-6febe96.png)
-
-### desktop (1140x640)
-![img](./asset/desktopPage1140x640-6febe96.png)
-
-### desktop (1920x1080)
-![img](./asset/desktopPage1920x1080-6febe96.png)
-
-### mobile (iPhone_6_landscape)
-![img](./asset/iPhone_6_landscape-6febe96.png)
-
-### mobile (iPhone_6)
-![img](./asset/iPhone_6-6febe96.png)
-
-### mobile (Nexus_7)
-![img](./asset/Nexus_7-6febe96.png)
 
 ### mobile (iPhone_6, fullPage)
 <p align="center">

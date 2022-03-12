@@ -4,7 +4,6 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 const util = require('util');
 const readdir = util.promisify(fs.readdir);
-// const telegram = require('./telegram.js');
 
 const DEFAULT_DESKTOP_VIEWPOINT_RATIO = [
   { width: 1366, height: 768 },
@@ -126,8 +125,9 @@ async function run() {
       ]);
       for (const [index, page] of mobilePages.entries()) {
         console.log('mobile for loop in ');
+        console.log('run on device', puppeteer.devices[`${includedDevices[index]}`].name);
         await page.emulate(puppeteer.devices[`${includedDevices[index]}`]);
-        await page.goto(url, { waitUntil: 'networkidle0', timeout: 0 });
+        await page.goto(url, { waitUntil: 'networkidle0' });
         await page.screenshot({
           path: `${PATH}${includedDevices[index].replace(
             / /g,
@@ -148,21 +148,5 @@ async function run() {
     core.setFailed(error.message);
   }
 }
-
-// async function postProcesses() {
-//   const files = await readdir(PATH);
-//   if (!files.length) {
-//     return;
-//   }
-
-//   if (!!process.env.TELE_CHAT_ID && !!process.env.TELE_BOT_TOKEN) {
-//     await telegram({
-//       path: PATH,
-//       files,
-//       teleChatId: process.env.TELE_CHAT_ID,
-//       teltBotToken: process.env.TELE_BOT_TOKEN,
-//     });
-//   }
-// }
 
 run();
