@@ -4,7 +4,7 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 const util = require('util');
 const readdir = util.promisify(fs.readdir);
-const telegram = require('./telegram.js');
+// const telegram = require('./telegram.js');
 
 const DEFAULT_DESKTOP_VIEWPOINT_RATIO = [
   { width: 1366, height: 768 },
@@ -27,7 +27,7 @@ const PATH = process.env.GITHUB_WORKSPACE
   : `screenshots/`;
 
 const POST_FIX = process.env.GITHUB_SHA
-  ? `${process.env.GITHUB_SHA}`.substr(0, 7)
+  ? `${process.env.GITHUB_SHA}`.slice(0, 7)
   : `${new Date().getTime()}`;
 
 async function run() {
@@ -142,27 +142,27 @@ async function run() {
 
     await browser.close();
 
-    await postProcesses();
+    // await postProcesses();
   } catch (error) {
     console.error(error);
     core.setFailed(error.message);
   }
 }
 
-async function postProcesses() {
-  const files = await readdir(PATH);
-  if (!files.length) {
-    return;
-  }
+// async function postProcesses() {
+//   const files = await readdir(PATH);
+//   if (!files.length) {
+//     return;
+//   }
 
-  if (!!process.env.TELE_CHAT_ID && !!process.env.TELE_BOT_TOKEN) {
-    await telegram({
-      path: PATH,
-      files,
-      teleChatId: process.env.TELE_CHAT_ID,
-      teltBotToken: process.env.TELE_BOT_TOKEN,
-    });
-  }
-}
+//   if (!!process.env.TELE_CHAT_ID && !!process.env.TELE_BOT_TOKEN) {
+//     await telegram({
+//       path: PATH,
+//       files,
+//       teleChatId: process.env.TELE_CHAT_ID,
+//       teltBotToken: process.env.TELE_BOT_TOKEN,
+//     });
+//   }
+// }
 
 run();
