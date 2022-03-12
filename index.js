@@ -90,9 +90,9 @@ async function run() {
     const launchOptions = !process.env.GITHUB_SHA
       ? {}
       : {
-          executablePath: 'google-chrome-stable',
-          args: ['--no-sandbox'],
-        };
+        executablePath: 'google-chrome-stable',
+        args: ['--no-sandbox'],
+      };
     const browser = await puppeteer.launch(launchOptions);
 
     const desktopPage = await browser.newPage();
@@ -127,7 +127,7 @@ async function run() {
       for (const [index, page] of mobilePages.entries()) {
         console.log('mobile for loop in ');
         await page.emulate(puppeteer.devices[`${includedDevices[index]}`]);
-        await page.goto(url, { waitUntil: 'networkidle0' });
+        await page.goto(url, { waitUntil: 'networkidle0', timeout: 0 });
         await page.screenshot({
           path: `${PATH}${includedDevices[index].replace(
             / /g,
