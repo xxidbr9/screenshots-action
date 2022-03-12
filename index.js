@@ -33,9 +33,9 @@ async function run() {
   try {
     const url =
       core.getInput('url') ||
-      'https://xxidbr9.github.io/contoh-responsive-di-css/';
+      'https://deploy-preview-23--objective-noyce-5f153b.netlify.app/screen_1';
     let includedDevices = core.getInput('devices') || 'iPhone 12 Pro';
-    const noDesktop = core.getInput('noDesktop') === 'true';
+    const noDesktop = core.getInput('noDesktop') !== 'true';
     const fullPage = core.getInput('fullPage') === 'true';
     let screenshotType = core.getInput('type') || DEFAULT_TYPE;
 
@@ -130,11 +130,11 @@ async function run() {
       for (const [index, page] of mobilePages.entries()) {
         console.log('mobile for loop in ');
         console.log('run on device', puppeteer.devices[`${includedDevices[index]}`].name);
-        await page.setDefaultNavigationTimeout(0);
+        // await page.setDefaultNavigationTimeout(0);
         await page.emulate(puppeteer.devices[`${includedDevices[index]}`]);
         await page.goto(url, {
-          // waitUntil: 'networkidle0'
-          waitUntil: 'networkidle2'
+          // waitUntil: 'networkidle2',
+          waitUntil: 'load'
         });
         await page.screenshot({
           path: `${PATH}${includedDevices[index].replace(
