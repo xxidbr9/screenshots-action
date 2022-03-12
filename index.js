@@ -32,10 +32,9 @@ const POST_FIX = process.env.GITHUB_SHA
 async function run() {
   try {
     const url =
-      core.getInput('url') ||
-      'https://deploy-preview-23--objective-noyce-5f153b.netlify.app/screen_1';
+      core.getInput('url') || '';
     let includedDevices = core.getInput('devices') || 'iPhone 12 Pro';
-    const noDesktop = core.getInput('noDesktop') !== 'true';
+    const noDesktop = core.getInput('noDesktop') === 'true';
     const fullPage = core.getInput('fullPage') === 'true';
     let screenshotType = core.getInput('type') || DEFAULT_TYPE;
 
