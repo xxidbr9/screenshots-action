@@ -32,7 +32,7 @@ const POST_FIX = process.env.GITHUB_SHA
 async function run() {
   try {
     const url =
-      core.getInput('url') || '';
+      core.getInput('url') || ' https://test-screenshots-cicd-git-screen1-xxidbr9.vercel.app/screen_1';
     let includedDevices = core.getInput('devices') || 'iPhone 12 Pro';
     const noDesktop = core.getInput('noDesktop') === 'true';
     const fullPage = core.getInput('fullPage') === 'true';
@@ -104,7 +104,7 @@ async function run() {
       core.startGroup('start process desktop');
       console.log('Processing desktop screenshot');
       await desktopPage.goto(url, {
-        waitUntil: 'networkidle0'
+        waitUntil: ['load','networkidle0']
         // waitUntil: 'load'
       });
       for (const { width, height } of DEFAULT_DESKTOP_VIEWPOINT_RATIO) {
@@ -132,7 +132,7 @@ async function run() {
         // await page.setDefaultNavigationTimeout(0);
         await page.emulate(puppeteer.devices[`${includedDevices[index]}`]);
         await page.goto(url, {
-          waitUntil: 'domcontentloaded',
+          waitUntil: ['load','networkidle0'],
         });
         await page.screenshot({
           path: `${PATH}${includedDevices[index].replace(
