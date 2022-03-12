@@ -132,8 +132,7 @@ async function run() {
         // await page.setDefaultNavigationTimeout(0);
         await page.emulate(puppeteer.devices[`${includedDevices[index]}`]);
         await page.goto(url, {
-          // waitUntil: 'networkidle2',
-          waitUntil: 'load'
+          waitUntil: 'networkidle0',
         });
         await page.screenshot({
           path: `${PATH}${includedDevices[index].replace(
