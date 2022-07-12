@@ -1,6 +1,9 @@
 # screenshots-action
 Generate a website screenshots in different viewpoint, devices.
 
+# EXAMPLE 
+https://github.com/xxidbr9/auto-screenshots-pr-example
+
 # TODO
 - [ ] Refactor entire code
 - [ ] Add better documentation
